@@ -57,7 +57,7 @@ func (p *Parser) next() {
 type ASTNode struct {
 	Type     NodeType
 	Children []*ASTNode
-	Value    rune //значение символа, если узел — NodeChar
+	Value    rune
 	RefNum   int
 }
 
@@ -196,7 +196,6 @@ func (p *Parser) checkRefs(node *ASTNode, initSet Set) (Set, error) {
 		return nil, fmt.Errorf("неизвестная нода %v", node.Type)
 	}
 }
-
 func ConvertToAST(tokens []Token) (*ASTNode, error) {
 	parser := NewParser(tokens)
 	node, err := parser.parseUnion()
